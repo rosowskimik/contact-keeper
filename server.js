@@ -1,11 +1,15 @@
 const express = require('express');
 const connectDB = require('./config/db');
 
+//Connecting to Database
 const app = express();
 connectDB();
 
+//Middleware
+app.use(express.json({ extended: false }));
+
 app.get('/', (req, res) => {
-  res.json({ Aww: 'Working' });
+  res.send('Welcome to contact keep');
 });
 
 //Define Routes
