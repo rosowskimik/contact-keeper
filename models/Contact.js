@@ -13,8 +13,8 @@ const ContactSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  number: {
-    type: Number
+  phone: {
+    type: String
   },
   type: {
     type: String,
