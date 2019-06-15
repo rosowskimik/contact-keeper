@@ -2,9 +2,13 @@ import React, { useState, useContext, useEffect } from 'react';
 import ContactContext from '../../context/contact/contactContext';
 
 const ContactForm = () => {
-  const { addContact, updateContact, current, clearCurrent } = useContext(
-    ContactContext
-  );
+  const {
+    addContact,
+    updateContact,
+    current,
+    clearCurrent,
+    clearFilter
+  } = useContext(ContactContext);
 
   //Add/Update form state
   useEffect(() => {
@@ -36,6 +40,7 @@ const ContactForm = () => {
 
   const clearAll = e => {
     clearCurrent();
+    clearFilter();
   };
 
   const onSubmit = e => {
@@ -44,6 +49,7 @@ const ContactForm = () => {
     } else {
       updateContact(contact);
     }
+    clearFilter();
     setContact({
       name: '',
       email: '',
