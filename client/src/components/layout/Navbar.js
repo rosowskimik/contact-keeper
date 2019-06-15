@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import ContactContext from '../../context/contact/contactContext';
+
 const Navbar = ({ title, icon }) => {
+  const { clearFilter } = useContext(ContactContext);
+
   return (
     <div className='navbar bg-primary'>
       <h1>
@@ -13,7 +17,9 @@ const Navbar = ({ title, icon }) => {
           <Link to='/'>Home</Link>
         </li>
         <li>
-          <Link to='/about'>About</Link>
+          <Link to='/about' onClick={() => clearFilter()}>
+            About
+          </Link>
         </li>
       </ul>
     </div>
