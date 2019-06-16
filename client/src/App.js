@@ -8,11 +8,17 @@ import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Alerts from './components/layout/Alerts';
 
+import setAuthToken from './utils/setAuthToken';
+
 import ContactState from './context/contact/ContactState';
 import AuthState from './context/auth/AuthState';
 import AlertState from './context/alert/AlertState';
 
 const App = () => {
+  if (sessionStorage.token) {
+    setAuthToken(sessionStorage.token);
+  }
+
   return (
     <AuthState>
       <ContactState>
