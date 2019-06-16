@@ -21,6 +21,16 @@ const Navbar = ({ title, icon }) => {
             About
           </Link>
         </li>
+        <li>
+          <Link to='/register' onClick={() => clearFilter()}>
+            Register
+          </Link>
+        </li>
+        <li>
+          <Link to='/login' onClick={() => clearFilter()}>
+            Login
+          </Link>
+        </li>
       </ul>
     </div>
   );
