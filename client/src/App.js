@@ -14,11 +14,11 @@ import ContactState from './context/contact/ContactState';
 import AuthState from './context/auth/AuthState';
 import AlertState from './context/alert/AlertState';
 
-const App = () => {
-  if (sessionStorage.token) {
-    setAuthToken(sessionStorage.token);
-  }
+if (sessionStorage.token) {
+  setAuthToken(sessionStorage.token);
+}
 
+const App = () => {
   return (
     <AuthState>
       <ContactState>

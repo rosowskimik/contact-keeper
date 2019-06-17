@@ -26,14 +26,13 @@ const AuthState = props => {
   const [state, dispatch] = useReducer(authReducer, initalState);
 
   //Load user
-  const loadUser = async () => {
+  const loadUser = async token => {
     setAuthToken(token);
-
     try {
       const res = await axios.get('/api/auth');
       dispatch({ type: USER_LOADED, payload: res.data });
     } catch (err) {
-      dispatch({ type: AUTH_ERROR });
+      dispatch({ type: AUTH_ERROR, payload: err.response.data.msg });
     }
   };
   //Register user
@@ -47,10 +46,24 @@ const AuthState = props => {
     try {
       const res = await axios.post('/api/users', formData, config);
       dispatch({ type: REGISTER_SUCCESS, payload: res.data });
-
-      loadUser();
+      loadUser(res.data.token);
     } catch (err) {
       dispatch({ type: REGISTER_FAIL, payload: err.response.data.msg });
+    }
+  };
+  //Login user
+  const login = async formData => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+    try {
+      const res = await axios.post('/api/auth', formData, config);
+      dispatch({ type: LOGIN_SUCCESS, payload: res.data });
+      loadUser(res.data.token);
+    } catch (err) {
+      dispatch({ type: LOGIN_FAIL, payload: err.response.data.msg });
     }
   };
 
