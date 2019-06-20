@@ -5,11 +5,12 @@ import AuthContext from '../../context/auth/authContext';
 import ContactContext from '../../context/contact/contactContext';
 
 const NavbarLinks = () => {
-  const { clearFilter } = useContext(ContactContext);
+  const { clearFilter, clearContacts } = useContext(ContactContext);
   const { isAuthenticated, user, logout } = useContext(AuthContext);
 
   const onLogout = () => {
     clearFilter();
+    clearContacts();
     logout();
   };
 

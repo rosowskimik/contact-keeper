@@ -7,8 +7,6 @@ const Login = props => {
   const { error, isAuthenticated, login, clearErrors } = useContext(
     AuthContext
   );
-
-  console.log(props.location);
   useEffect(() => {
     if (isAuthenticated) {
       props.history.push('/');
