@@ -30,12 +30,13 @@ export default (state, action) => {
     }
     case REGISTER_FAIL:
     case AUTH_ERROR:
-    case LOGIN_FAIL: {
-      // sessionStorage.removeItem('token');
+    case LOGIN_FAIL:
+    case LOGOUT: {
+      sessionStorage.removeItem('token');
       return {
         ...state,
         token: null,
-        isAuthenticated: false,
+        isAuthenticated: null,
         loading: false,
         user: null,
         error: action.payload

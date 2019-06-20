@@ -7,6 +7,8 @@ import About from './components/pages/About';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Alerts from './components/layout/Alerts';
+import NotFound from './components/pages/NotFound';
+import PrivateRoute from './routing/PrivateRoute';
 
 import setAuthToken from './utils/setAuthToken';
 
@@ -28,10 +30,11 @@ const App = () => {
               <Navbar />
               <Alerts />
               <Switch>
-                <Route exact path='/' component={Home} />
+                <PrivateRoute exact path='/' component={Home} />
                 <Route exact path='/about' component={About} />
                 <Route exact path='/register' component={Register} />
                 <Route exact path='/login' component={Login} />
+                <Route component={NotFound} />
               </Switch>
             </Fragment>
           </Router>

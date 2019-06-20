@@ -18,7 +18,7 @@ const AuthState = props => {
   const initalState = {
     token: sessionStorage.getItem('token'),
     isAuthenticated: null,
-    loading: true,
+    loading: false,
     user: null,
     error: null
   };
@@ -66,6 +66,8 @@ const AuthState = props => {
       dispatch({ type: LOGIN_FAIL, payload: err.response.data.msg });
     }
   };
+  //Logout
+  const logout = () => dispatch({ type: LOGOUT });
 
   const clearErrors = () => dispatch({ type: CLEAR_ERRORS });
 
@@ -81,7 +83,8 @@ const AuthState = props => {
         register,
         clearErrors,
         loadUser,
-        login
+        login,
+        logout
       }}
     >
       {props.children}

@@ -1,36 +1,15 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 import PropTypes from 'prop-types';
-
-import ContactContext from '../../context/contact/contactContext';
+import NavbarLinks from './NavbarLinks';
 
 const Navbar = ({ title, icon }) => {
-  const { clearFilter } = useContext(ContactContext);
-
   return (
     <div className='navbar bg-primary'>
       <h1>
         <i className={icon} /> {title}
       </h1>
       <ul>
-        <li>
-          <Link to='/'>Home</Link>
-        </li>
-        <li>
-          <Link to='/about' onClick={() => clearFilter()}>
-            About
-          </Link>
-        </li>
-        <li>
-          <Link to='/register' onClick={() => clearFilter()}>
-            Register
-          </Link>
-        </li>
-        <li>
-          <Link to='/login' onClick={() => clearFilter()}>
-            Login
-          </Link>
-        </li>
+        <NavbarLinks />
       </ul>
     </div>
   );
