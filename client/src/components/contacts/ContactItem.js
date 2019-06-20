@@ -5,16 +5,13 @@ import PropTypes from 'prop-types';
 const ContactItem = ({ contact }) => {
   const { _id, name, email, phone, type } = contact;
 
-  const {
-    deleteContact,
-    setCurrent,
-    clearCurrent,
-    filterContacts
-  } = useContext(ContactContext);
+  const { deleteContact, setCurrent, clearCurrent, clearFilter } = useContext(
+    ContactContext
+  );
 
   const onClickDelete = e => {
     deleteContact(_id);
-    filterContacts();
+    clearFilter();
     clearCurrent();
   };
 
